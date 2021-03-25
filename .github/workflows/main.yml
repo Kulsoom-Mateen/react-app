@@ -31,14 +31,12 @@ jobs:
         with:
            #Yarn commit
            cmd: install
-      - name: Installing npm
-        run: npm install
         
       - name: Creating build
         run: npm run build
         
       - name: Installing surge
-        run: npm install -g surge
+        run: npm install -global surge
         
       - name: Deploying on surge   
         run: surge ./build http://bootcamp-react-app-2020_.surge.sh/ --token ${{secrets.TOKEN_SECRET}}
