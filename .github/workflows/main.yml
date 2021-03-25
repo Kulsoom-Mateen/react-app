@@ -31,11 +31,11 @@ jobs:
         with:
            #Yarn commit
            cmd: install
-       
+      - name: Installing npm
+        run: npm install
+        
       - name: Creating build
-        run: |
-           npm install
-           CI=false npm run build
+        run: npm run build
         
       - name: Installing surge
         run: npm install -g surge
