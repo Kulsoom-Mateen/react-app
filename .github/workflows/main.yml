@@ -33,7 +33,9 @@ jobs:
            cmd: install
         
       - name: Creating build
-        run: npm run build
+        run: |
+          npm install
+          CI=false npm run build
         
       - name: Installing surge
         run: npm install -global surge
