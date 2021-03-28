@@ -1,4 +1,3 @@
-# This is a basic workflow to help you get started with Actions
 
 name: CI
 
@@ -25,18 +24,21 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           version: 12
-        
+      
+      - name: Install packages
+        run: npm install
+      
       - name: Github actions for yarn
-        uses: Borales/actions-yarn@v2.1.0
+        uses: borales/actions-yarn@v2.0.0
         with:
            #Yarn commit
            cmd: install
-       
+        
       - name: Creating build
         run: npm build
         
       - name: Installing surge
-        run: npm install -g surge
+        run: npm install -global surge
         
       - name: Deploying on surge   
-        run: surge ./build bootcamp-react-app-2020_.surge.sh/ --token ${{secrets.TOKEN_SECRET}}
+        run: surge ./build http://bootcamp-react-app-2020_.surge.sh/ --token ${{secrets.TOKEN_SECRET}}
